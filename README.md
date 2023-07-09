@@ -6,7 +6,7 @@ DigDigを利用するには、以下の手順が必要です:
 1. [Minecraftの公式サイト](https://www.minecraft.net/ja-jp)からMinecraft: Java & Bedrock Edition for PCをダウンロードおよびインストールします。
 2. [Spigot Server](https://getbukkit.org/)をダウンロードします。
 3. DigDigの**プラグイン.jarファイル**（https://github.com/tai442/DigDig/blob/main/build/libs/DigDig-1.0-SNAPSHOT-all.jar)
-   をMinecraftサーバーの**'plugins'フォルダ**に配置します。
+   をMinecraftサーバーの** 'plugins'フォルダ **に配置します。
 ## 動作環境 
 - Minecraft 1.19.3
 - Spigot Server 1.19.3
