@@ -16,7 +16,8 @@ public class ExecutingPlayer {
   private int gameTime;
   private Location originalLocation;
 
-  public ExecutingPlayer() {
+  public ExecutingPlayer(String playerName) {
+    this.playerName = playerName;
   }
 
   private class Location {

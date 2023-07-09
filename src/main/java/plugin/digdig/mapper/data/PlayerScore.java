@@ -1,4 +1,4 @@
-package plugin.enemydown.mapper.data;
+package plugin.digdig.mapper.data;
 
 import java.time.LocalDateTime;
 import lombok.Getter;
@@ -16,12 +16,12 @@ public class PlayerScore {
   private int id;
   private String playerName;
   private int score;
-  private String difficulty;
   private LocalDateTime registeredDt;
 
-  public PlayerScore(String playerName, int score, String difficulty) {
+  public PlayerScore(String playerName, int score) {
     this.playerName = playerName;
     this.score = score;
-    this.difficulty = difficulty;
   }
 }
+
+

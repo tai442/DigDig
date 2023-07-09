@@ -1,14 +1,14 @@
-package plugin.enemydown.mapper;
+package plugin.digdig.mapper;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
-import plugin.enemydown.mapper.data.PlayerScore;
+import plugin.digdig.mapper.data.PlayerScore;
 
 public interface PlayerScoreMapper {
   @Select("select * from player_score")
-  List<PlayerScore> selectLIst();
+  List<PlayerScore> selectList();
 
-  @Insert("insert player_score(player_name, score, difficulty, registered_dt)values (#{playerName}, #{score}, #{difficulty}, now())")
+  @Insert("insert player_score(player_name, score, registered_dt)values (#{playerName}, #{score}, now())")
   int insert(PlayerScore playerScore);
 }

@@ -2,3 +2,5 @@ name: Main
 version: '${version}'
 main: plugin.digdig.Main
 api-version: 1.19
+commands:
+  digDig:
