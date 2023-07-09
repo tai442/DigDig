@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
@@ -67,7 +66,7 @@ public class DigDigCommand extends BaseCommand implements org.bukkit.event.Liste
     ExecutingPlayer nowExecutingPlayer = getPlayerScore(player);
     nowExecutingPlayer.setGameTime(GAME_TIME);
 
-    player.sendTitle("ゲーム開始！", "鉱石を掘って得点を稼ごう！" , 10, 50, 0);
+    player.sendTitle("ゲーム開始！", GAME_TIME + "秒間で鉱石を掘って得点を稼ごう！" , 10, 50, 0);
 
     initPlayerStatus(player);
 
@@ -87,7 +86,7 @@ public class DigDigCommand extends BaseCommand implements org.bukkit.event.Liste
     Player player = e.getPlayer();
     Block block = e.getBlock();
 
-    if (Objects.isNull(player) || !changedBlocks.contains(block.getState())) {
+    if (!changedBlocks.contains(block.getState())) {
       return;
     }
     executingPlayerList.stream()
