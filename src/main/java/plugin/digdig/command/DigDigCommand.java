@@ -66,7 +66,7 @@ public class DigDigCommand extends BaseCommand implements org.bukkit.event.Liste
     ExecutingPlayer nowExecutingPlayer = getPlayerScore(player);
     nowExecutingPlayer.setGameTime(GAME_TIME);
 
-    player.sendTitle("ゲーム開始！", GAME_TIME + "秒間で鉱石を掘って得点を稼ごう！" , 10, 50, 0);
+    player.sendTitle("ゲーム開始！", GAME_TIME + "　秒間で鉱石を掘って得点を稼ごう！" , 10, 50, 0);
 
     initPlayerStatus(player);
 
