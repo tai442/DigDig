@@ -13,7 +13,6 @@ import plugin.digdig.mapper.data.PlayerScore;
 /**
  * DB接続やそれに付随する登録や更新処理を行う
  */
-
 public class PlayerScoreData {
 
   private final PlayerScoreMapper mapper;
