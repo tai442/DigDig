@@ -17,4 +17,4 @@ DigDigを利用するには、以下の手順が必要です:
 - 鉱石を採掘するとポイントが加算されます。
 - 鉱石ごとに異なるポイントが設定されており、ポイントの合計が70点以上で花火が打ち上げられます。
 
-![IMG_5172](https://github.com/tai442/DigDig/assets/130809329/12f9519f-6f5e-45e3-8567-ede4fb76cb93)
+![IMG_5172]　width="400" (https://github.com/tai442/DigDig/assets/130809329/12f9519f-6f5e-45e3-8567-ede4fb76cb93)
