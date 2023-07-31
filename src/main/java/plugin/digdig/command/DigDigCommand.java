@@ -27,6 +27,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.scheduler.BukkitRunnable;
 import plugin.digdig.Main;
 import plugin.digdig.PlayerScoreData;
+import plugin.digdig.data.BlockTypePoints;
 import plugin.digdig.data.ExecutingPlayer;
 import plugin.digdig.mapper.data.PlayerScore;
 
@@ -93,24 +94,14 @@ public class DigDigCommand extends BaseCommand implements org.bukkit.event.Liste
         .filter(p -> p.getPlayerName().equals(player.getName()))
         .findFirst()
         .ifPresent(p -> {
-          int point = 0;
-          switch (block.getType()) {
-            case AIR -> {
-              return;
-            }
-            case COAL_ORE -> point = 3;
-            case IRON_ORE -> point = 5;
-            case COPPER_ORE, GOLD_ORE -> point = 10;
-            case LAPIS_ORE, REDSTONE_ORE -> point = 30;
-            case EMERALD_ORE, DIAMOND_ORE -> point = 50;
-            default -> {
-            }
-          }
+          int point = BlockTypePoints.getPoints(block.getType());
+          String blockType = BlockTypePoints.getBlockType(block.getType());
+
           p.setScore(p.getScore() + point);
           if (point == 0) {
             return;
           }
-          player.sendMessage("ブロックを破壊！　現在のスコアは　" + p.getScore() + "点！");
+          player.sendMessage(blockType + " を破壊！　現在のスコアは　" + p.getScore() + "点！");
         });
   }
 
