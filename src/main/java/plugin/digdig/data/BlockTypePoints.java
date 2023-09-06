@@ -1,23 +1,25 @@
 package plugin.digdig.data;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.bukkit.Material;
+import plugin.digdig.OreScoreData;
+import plugin.digdig.mapper.data.OreScore;
 
 public class BlockTypePoints {
-  private static final Map<Material, Integer> pointsMap = new HashMap<>();
+  private static final OreScoreData oreScoreData = new OreScoreData();
+  private static final Map<String, Integer> oreTypeToPoints = new HashMap<>();
   private static final Map<Material, String> blockType = new HashMap<>();
 
+  // 鉱石の名前と得点をデータベースから取得してマップに格納する
   static {
-    pointsMap.put(Material.COAL_ORE, 3);
-    pointsMap.put(Material.IRON_ORE, 5);
-    pointsMap.put(Material.COPPER_ORE, 10);
-    pointsMap.put(Material.GOLD_ORE, 10);
-    pointsMap.put(Material.LAPIS_ORE, 30);
-    pointsMap.put(Material.REDSTONE_ORE, 30);
-    pointsMap.put(Material.EMERALD_ORE, 50);
-    pointsMap.put(Material.DIAMOND_ORE, 50);
+    List<OreScore> oreScores = oreScoreData.getAllOreScores();
+    for (OreScore oreScore : oreScores) {
+      oreTypeToPoints.put(oreScore.getOreType(), oreScore.getScore());
+    }
 
+    // 鉱石の種類と名前のマッピングはそのまま使用
     blockType.put(Material.COAL_ORE, "石炭の鉱石");
     blockType.put(Material.IRON_ORE, "鉄の鉱石");
     blockType.put(Material.COPPER_ORE, "銅の鉱石");
@@ -29,10 +31,12 @@ public class BlockTypePoints {
   }
 
   public static int getPoints(Material material) {
-    return pointsMap.getOrDefault(material, 0);
+    String oreType = material.toString();
+    return oreTypeToPoints.getOrDefault(oreType, 0);
   }
 
   public static String getBlockType(Material material) {
     return blockType.getOrDefault(material, "");
   }
 }
+

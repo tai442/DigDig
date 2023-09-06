@@ -12,16 +12,13 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class PlayerScore {
+public class OreScore {
   private int id;
-  private String playerName;
+  private String oreType;
   private int score;
-  private LocalDateTime registeredAt;
 
-  public PlayerScore(String playerName, int score) {
-    this.playerName = playerName;
+  public OreScore(String oreType, int score) {
+    this.oreType = oreType;
     this.score = score;
   }
 }
-
-

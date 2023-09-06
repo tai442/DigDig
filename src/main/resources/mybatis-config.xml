@@ -11,7 +11,7 @@
       <transactionManager type="JDBC"/>
       <dataSource type="POOLED">
         <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/spigot_server"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/digdig"/>
         <property name="username" value="root"/>
         <property name="password" value="Uedataichi442"/>
       </dataSource>
@@ -19,5 +19,7 @@
   </environments>
   <mappers>
     <mapper class="plugin.digdig.mapper.PlayerScoreMapper"/>
+    <mapper class="plugin.digdig.mapper.OreScoreMapper"/>
+    <mapper class="plugin.digdig.mapper.GameTimeMapper"/>
   </mappers>
 </configuration>
