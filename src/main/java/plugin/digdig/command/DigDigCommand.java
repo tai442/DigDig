@@ -27,9 +27,11 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.scheduler.BukkitRunnable;
 import plugin.digdig.GameTimeData;
 import plugin.digdig.Main;
+import plugin.digdig.OreScoreData;
 import plugin.digdig.PlayerScoreData;
-import plugin.digdig.data.BlockTypePoints;
+import plugin.digdig.data.BlockType;
 import plugin.digdig.data.ExecutingPlayer;
+import plugin.digdig.mapper.data.OreScore;
 import plugin.digdig.mapper.data.PlayerScore;
 
 /**
@@ -46,6 +48,8 @@ public class DigDigCommand extends BaseCommand implements org.bukkit.event.Liste
 
   private final Main main;
   private final PlayerScoreData playerScoreData = new PlayerScoreData();
+  private final OreScoreData oreScoreData = new OreScoreData();
+
   private final GameTimeData gameTimeData = new GameTimeData();
   private final List<ExecutingPlayer> executingPlayerList = new ArrayList<>();
   private final List<BlockState> originalBlocks = new ArrayList<>();
@@ -95,8 +99,9 @@ public class DigDigCommand extends BaseCommand implements org.bukkit.event.Liste
         .filter(p -> p.getPlayerName().equals(player.getName()))
         .findFirst()
         .ifPresent(p -> {
-          int point = BlockTypePoints.getPoints(block.getType());
-          String blockType = BlockTypePoints.getBlockType(block.getType());
+          List<OreScore> oreScores = oreScoreData.getAllOreScores();
+          int point = getOreScoreByMaterial(oreScores, block.getType()).getScore();
+          String blockType = BlockType.getBlockType(block.getType());
 
           p.setScore(p.getScore() + point);
           if (point == 0) {
@@ -247,6 +252,21 @@ public class DigDigCommand extends BaseCommand implements org.bukkit.event.Liste
         Material.ACACIA_WOOD, Material.OAK_WOOD, Material.BIRCH_WOOD, Material.STONE, Material.LAPIS_ORE, Material.REDSTONE_ORE);
     changeBlocks(world, playerLocation, radius, -5,
         Material.ACACIA_WOOD, Material.OAK_WOOD, Material.BIRCH_WOOD, Material.JUNGLE_WOOD, Material.STONE, Material.EMERALD_ORE, Material.DIAMOND_ORE);
+  }
+
+  /**
+   * 指定された鉱石に対応する得点情報を取得します。
+   *
+   * @param oreScores 鉱石の得点情報が含まれたリスト
+   * @param material 鉱石の種類
+   * @return 指定された鉱石に対応する得点。見つからない場合がデフォルトで０を返す。
+   */
+  private OreScore getOreScoreByMaterial(List<OreScore> oreScores, Material material) {
+    String oreType = material.toString();
+    return oreScores.stream()
+        .filter(oreScore -> oreScore.getOreType().equals(oreType))
+        .findFirst()
+        .orElse(new OreScore(oreType, 0));
   }
 
   /**
