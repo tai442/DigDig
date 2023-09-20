@@ -17,4 +17,4 @@ DigDigを利用するには、以下の手順が必要です:
 - 鉱石ごとに異なるポイントが設定されており、ポイントの合計が70点以上で花火が打ち上げられます。
 - ゲーム時間はや鉱石の点数は[DigDigApp](https://github.com/tai442/DigDigApp.git)で設定されます。
 
-[説明動画]（https://youtu.be/WqAqVxleHys）
+[ゲームの説明動画はこちら](https://youtu.be/WqAqVxleHys)
