@@ -1,4 +1,4 @@
-# DigDig　　 
+# DigDig
 ## 概要
 DigDigはJava版Minecraftのプラグインで、鉱石の発掘を行うミニゲームです。
 ## 導入方法
